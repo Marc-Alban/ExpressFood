@@ -58,8 +58,8 @@ CREATE TABLE IF NOT EXISTS `expressFood`.`Utilisateur` (
   `StatutLivreur_idStatutLivreur` INT NOT NULL,
   `Plat_idPlat` INT NOT NULL,
   PRIMARY KEY (`idUtilisateur`, `StatutLivreur_idStatutLivreur`, `Plat_idPlat`),
-  INDEX `fk_Utilisateur_StatutLivreur1_idx` (`StatutLivreur_idStatutLivreur` ASC) VISIBLE,
-  INDEX `fk_Utilisateur_Plat1_idx` (`Plat_idPlat` ASC) VISIBLE,
+  INDEX `fk_Utilisateur_StatutLivreur1_idx` (`StatutLivreur_idStatutLivreur` ASC) ,
+  INDEX `fk_Utilisateur_Plat1_idx` (`Plat_idPlat` ASC) ,
   CONSTRAINT `fk_Utilisateur_StatutLivreur1`
     FOREIGN KEY (`StatutLivreur_idStatutLivreur`)
     REFERENCES `expressFood`.`StatutLivreur` (`idStatutLivreur`)
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `expressFood`.`Commande` (
   `Utilisateur_StatutLivreur_idStatutLivreur` INT NOT NULL,
   `Utilisateur_Plat_idPlat` INT NOT NULL,
   PRIMARY KEY (`idCommande`, `Utilisateur_idUtilisateur`, `Utilisateur_StatutLivreur_idStatutLivreur`, `Utilisateur_Plat_idPlat`),
-  INDEX `fk_Commande_Utilisateur1_idx` (`Utilisateur_idUtilisateur` ASC, `Utilisateur_StatutLivreur_idStatutLivreur` ASC, `Utilisateur_Plat_idPlat` ASC) VISIBLE,
+  INDEX `fk_Commande_Utilisateur1_idx` (`Utilisateur_idUtilisateur` ASC, `Utilisateur_StatutLivreur_idStatutLivreur` ASC, `Utilisateur_Plat_idPlat` ASC) ,
   CONSTRAINT `fk_Commande_Utilisateur1`
     FOREIGN KEY (`Utilisateur_idUtilisateur` , `Utilisateur_StatutLivreur_idStatutLivreur` , `Utilisateur_Plat_idPlat`)
     REFERENCES `expressFood`.`Utilisateur` (`idUtilisateur` , `StatutLivreur_idStatutLivreur` , `Plat_idPlat`)
@@ -119,8 +119,8 @@ CREATE TABLE IF NOT EXISTS `expressFood`.`Commande_menu` (
   `Plat_idPlat` INT NOT NULL,
   `quantite` INT NULL,
   PRIMARY KEY (`Commande_idCommande`, `Plat_idPlat`),
-  INDEX `fk_Commande_has_Plat_Plat1_idx` (`Plat_idPlat` ASC) VISIBLE,
-  INDEX `fk_Commande_has_Plat_Commande_idx` (`Commande_idCommande` ASC) VISIBLE,
+  INDEX `fk_Commande_has_Plat_Plat1_idx` (`Plat_idPlat` ASC) ,
+  INDEX `fk_Commande_has_Plat_Commande_idx` (`Commande_idCommande` ASC) ,
   CONSTRAINT `fk_Commande_has_Plat_Commande`
     FOREIGN KEY (`Commande_idCommande`)
     REFERENCES `expressFood`.`Commande` (`idCommande`)
@@ -141,8 +141,8 @@ CREATE TABLE IF NOT EXISTS `expressFood`.`client_Adresse` (
   `Utilisateur_idUtilisateur` INT NOT NULL,
   `Adresse_idAdresse` INT NOT NULL,
   PRIMARY KEY (`Utilisateur_idUtilisateur`, `Adresse_idAdresse`),
-  INDEX `fk_Utilisateur_has_Adresse_Adresse1_idx` (`Adresse_idAdresse` ASC) VISIBLE,
-  INDEX `fk_Utilisateur_has_Adresse_Utilisateur1_idx` (`Utilisateur_idUtilisateur` ASC) VISIBLE,
+  INDEX `fk_Utilisateur_has_Adresse_Adresse1_idx` (`Adresse_idAdresse` ASC) ,
+  INDEX `fk_Utilisateur_has_Adresse_Utilisateur1_idx` (`Utilisateur_idUtilisateur` ASC) ,
   CONSTRAINT `fk_Utilisateur_has_Adresse_Utilisateur1`
     FOREIGN KEY (`Utilisateur_idUtilisateur`)
     REFERENCES `expressFood`.`Utilisateur` (`idUtilisateur`)
